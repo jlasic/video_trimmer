@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_video_trimmer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.bro.videotrimer.VideoTrimmerActivity">
+
+    <RelativeLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:gravity="center">
+
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:id="@+id/progressSpinner"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timeline_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/scrollContainer"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true">
+
+            <com.example.bro.videotrimer.MyScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:id="@+id/video_frames_container"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignLeft="@+id/scrollView"
+                    android:layout_alignStart="@+id/scrollView"
+                    android:layout_alignTop="@+id/scrollView"
+                    android:background="@android:color/darker_gray"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/video_frames"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+                </RelativeLayout>
+
+            </com.example.bro.videotrimer.MyScrollView>
+
+            <com.example.bro.videotrimer.TimelineProgressUpdater
+                android:id="@+id/progressUpdater"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:cursor_color="#FF0000"
+                app:cursor_width="10dp" />
+
+            <com.example.bro.videotrimer.RangeSeekbar.CrystalRangeSeekbar
+                android:id="@+id/rangeSeekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_padding="16dp"
+                app:data_type="_double"
+                app:left_thumb_color="#212121"
+                app:left_thumb_color_pressed="#3949ab"
+                app:max_value="1"
+                app:min_value="0"
+                app:right_thumb_color="#212121"
+                app:right_thumb_color_pressed="#3949ab"
+                app:thumb_diameter="30dp"
+                app:thumb_diameter_height="70dp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="sendResult"
+        android:text="OK" />
+</LinearLayout>
